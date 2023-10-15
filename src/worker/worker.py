@@ -17,7 +17,6 @@ async def process_message(message: AbstractIncomingMessage) -> None:
 
 
 async def background_worker():
-    print(config.rabbitmq_url)
     connection = await aio_pika.connect_robust(config.rabbitmq_url)
     async with connection:
         channel = await connection.channel()

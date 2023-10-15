@@ -7,7 +7,6 @@ async def publish(rabbitmq_url: str, queue_name: str, text: str):
     connection = await aio_pika.connect(rabbitmq_url)
     async with connection:
         channel = await connection.channel()
-        print(type(text))
         message_body = text.encode("utf-8")
         message = Message(
             message_body,
